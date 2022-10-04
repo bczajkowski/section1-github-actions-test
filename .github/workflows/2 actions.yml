@@ -3,7 +3,7 @@ name:  Actions Workflow
 on: 
   repository_dispatch:
   # gdy tego nie podamy to wywolany zostanie niezaleznie od tego co przeslemy
-    types: [build] 
+    # types: [build] 
   # schedule:
   #   - cron: "0/5 * * * *"
   #   - cron: "0/6 * * * *"
