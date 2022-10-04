@@ -27,3 +27,10 @@ jobs:
       - name: Directory Bash
         run: pwd
         shell: bash
+  run-after-all-successed:
+    runs-on: windows-latest
+    needs: [run-shell-command, run-windows-commands]
+    steps:
+      - name: PrintMessage
+        run: echo "Everything has passed"
+
