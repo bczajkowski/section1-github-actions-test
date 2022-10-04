@@ -5,7 +5,7 @@ active: true
 # definicja obiektu:
 key: 
     key: value
-    key2: 33
+    key2: 333
     key3:
         key: value
         key2: value
