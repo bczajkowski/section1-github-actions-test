@@ -13,3 +13,8 @@ jobs:
           node -v
           npm -v
           dotnet --info
+      - name: python Command
+        run: |
+          import platform
+          print(platform.processor())
+        shell: python
