@@ -1,15 +1,32 @@
 name:  Actions Workflow
 
 on: 
-  repository_dispatch:
-  # gdy tego nie podamy to wywolany zostanie niezaleznie od tego co przeslemy
-    types: [build] 
+  push:
+  # oznacza ze wf wykonuje sie tylko dla ponizszych branchy
+    branches:
+      - main
+      - 'feature/*' 
+      - 'feature/**'
+      - '!feature/featC' 
+    tags:
+      - v1.*
+      # oznacza ze ten wf dziala na zmiany w plikach js za wyjatkiem filename.js
+    paths:
+      - '**.js'
+      - '!filename.js'
+    # oznacza ze nie chcemy uruchamiac tego WF jesli push dotyczy zmiany w katalogu docs/**:
+    # paths-ignore:
+    #   - 'docs/**' 
+
+  # repository_dispatch:
+  # # gdy tego nie podamy to wywolany zostanie niezaleznie od tego co przeslemy
+  #   types: [build] 
   # schedule:
   #   - cron: "0/5 * * * *"
   #   - cron: "0/6 * * * *"
   # push:
-  pull_request:
-    types: [closed, assigned, opened, reopened]
+  # pull_request:
+  #   types: [closed, assigned, opened, reopened]
 
 jobs:
  run-github-actions:
