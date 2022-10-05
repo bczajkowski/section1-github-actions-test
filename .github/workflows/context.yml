@@ -10,18 +10,26 @@ jobs:
           echo ${{ contains('Hello', 'll') }}
           echo ${{ startsWith('Hello', 'he') }}
           echo ${{ format('Hello {0} {1} {2}', 'World', '!', '!') }}
-  one:
+  # one:
+  #   runs-on: ubuntu-latest
+  #   if: ${{ github.event_name == 'push' }}
+  #   steps:
+  #     - name: FailureStep
+  #       run: eccho 'success'
+  #     - name: RegardlessSuccessOnFirstStep
+  #       if: ${{ failure() }}
+  #       run: echo 'It runs regardless on first step success'
+  #     - name: It will always run
+  #       if: ${{ always()}}
+  #       run: echo 'It always run'
+  two:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' }}
     steps:
-      - name: FailureStep
-        run: eccho 'success'
-      - name: RegardlessSuccessOnFirstStep
-        if: ${{ failure() }}
-        run: echo 'It runs regardless on first step success'
-      - name: It will always run
-        if: ${{ always()}}
-        run: echo 'It always run'
+      - name: It throw an error
+        run: ecchsdsd
+        continue-on-error: true
+      - name: Continue on error
+        run: echo 'continuing alter error with previously step'
   dump_contexts_to_log:
     runs-on: ubuntu-latest
     steps:
